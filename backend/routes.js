@@ -1,6 +1,11 @@
 const r = require('express').Router(), db = require('./db'), bcrypt = require('bcryptjs'), jwt = require('jsonwebtoken'), XLSX = require('xlsx');
 const { compute } = require('./analytics');
-const SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
+
+const SECRET = process.env.JWT_SECRET;
+
+if (!SECRET) {
+  throw new Error('JWT_SECRET is required. Set it in your environment before starting the server.');
+}
 
 const wrap = f => (req, res, next) => f(req, res, next).catch(next);
 const bad = (m, s = 400) => { const e = new Error(m); e.status = s; return e };
