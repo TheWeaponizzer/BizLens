@@ -161,7 +161,7 @@ The login comment in that SQL dump specifies:
 
 ```text
 Email: demo@bizlens.local
-Password: password
+Password: BizLens@2026
 ```
 
 These are two different demo-data loading methods; use the credentials associated with the method you use.
